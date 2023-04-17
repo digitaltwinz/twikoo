@@ -1,8 +1,5 @@
 import i18n from './i18n'
 
-// ISO Language Code Table http://www.lingoes.net/en/translator/langcode.htm
-// RSS Language Code Table https://www.rssboard.org/rss-language-codes
-
 const langs = {
   zh: 0,
   'zh-cn': 0,
@@ -19,19 +16,20 @@ const langs = {
   'uz-UZ': 4
 }
 
-let userLanguage = 'uz'
+let userLanguage = ''
 
 const setLanguage = (options = {}) => {
-  userLanguage = options.lang in langs ? options.lang : navigator.language
+  // Set default language to Uzbek if no language is specified in options
+  userLanguage = options.lang in langs ? options.lang : 'uz'
 }
 
 const translate = (key, language) => {
-  const lang = language || userLanguage || navigator.language
+  const lang = language || userLanguage || 'uz' // Always set default language to Uzbek
   let value
   if (lang && langs[lang]) {
     value = i18n[key][langs[lang]]
   } else {
-    value = i18n[key][langs['uz-UZ']]
+    value = i18n[key][langs['']]
   }
   return value || ''
 }
