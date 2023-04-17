@@ -19,7 +19,7 @@ const langs = {
   'uz-UZ': 4
 }
 
-let userLanguage = 'uz-UZ'
+let userLanguage = 'uz'
 
 const setLanguage = (options = {}) => {
   userLanguage = options.lang in langs ? options.lang : navigator.language
