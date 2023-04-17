@@ -19,7 +19,7 @@ const langs = {
   'uz-UZ': 4
 }
 
-let userLanguage = ''
+let userLanguage = 'uz-UZ'
 
 const setLanguage = (options = {}) => {
   userLanguage = options.lang in langs ? options.lang : navigator.language
@@ -31,7 +31,7 @@ const translate = (key, language) => {
   if (lang && langs[lang]) {
     value = i18n[key][langs[lang]]
   } else {
-    value = i18n[key][langs['zh-CN']]
+    value = i18n[key][langs['uz-UZ']]
   }
   return value || ''
 }
